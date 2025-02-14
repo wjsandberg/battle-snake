@@ -10,6 +10,7 @@
 // To get you started we've included code to prevent your Battlesnake from moving backwards.
 // For more info see docs.battlesnake.com
 
+
 import runServer from './server.js';
 
 // info is called when you create your Battlesnake on play.battlesnake.com
@@ -67,11 +68,44 @@ function move(gameState) {
   }
 
   // TODO: Step 1 - Prevent your Battlesnake from moving out of bounds
-  // boardWidth = gameState.board.width;
-  // boardHeight = gameState.board.height;
+   let boardWidth = gameState.board.width;
+   let boardHeight = gameState.board.height;
+
+   if(myHead.x == 0) {
+    isMoveSafe.left = false;}
+    if(myHead.y == 0) {
+      isMoveSafe.down = false;}
+      if(myHead.x == boardWidth - 1){
+        isMoveSafe.right = false;}
+      if(myHead.y == boardHeight - 1){
+        isMoveSafe.up = false;}
+
+let allSnakes = gameState.board.snakes;
+for (let j = 0; j< allSnakes.length; j++){
+  let snake = allSnakes[j].body
+  for (let i = 0; i< snake.length; i++) {
+    if(snake[i].y == myHead.y && snake[i].x == myHead.x - 1){
+      isMoveSafe.left = false;
+    }
+    if(snake[i].y == myHead.y && snake[i].x == myHead.x + 1){
+      isMoveSafe.right = false;
+    }
+    if(snake[i].x == myHead.x && snake[i].y == myHead.y - 1){
+      isMoveSafe.down = false;
+    }
+    if(snake[i].x == myHead.x && snake[i].y == myHead.y + 1){
+      isMoveSafe.up = false;
+    }
+
+  }
+}
+
+      //  if(myBody.{i})
 
   // TODO: Step 2 - Prevent your Battlesnake from colliding with itself
   // myBody = gameState.you.body;
+
+
 
   // TODO: Step 3 - Prevent your Battlesnake from colliding with other Battlesnakes
   // opponents = gameState.board.snakes;
@@ -93,6 +127,11 @@ function move(gameState) {
 
   console.log(`MOVE ${gameState.turn}: ${nextMove}`)
   return { move: nextMove };
+}
+
+function dist(obj1, obj2){
+  let xDiff = Math.abs(obj1.x - obj2.x)
+  let yDiff = Math.abs(obj1.y - obj2.y)
 }
 
 runServer({

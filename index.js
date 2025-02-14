@@ -96,8 +96,41 @@ for (let j = 0; j< allSnakes.length; j++){
     if(snake[i].x == myHead.x && snake[i].y == myHead.y + 1){
       isMoveSafe.up = false;
     }
+    if(snake[i].y == myHead.y && snake[i].x == myHead.x - 2){
+      isMoveSafe.left = false;
+    }
+    if(snake[i].y == myHead.y && snake[i].x == myHead.x + 2){
+      isMoveSafe.right = false;
+    }
+    if(snake[i].x == myHead.x && snake[i].y == myHead.y - 2){
+      isMoveSafe.down = false;
+    }
+    if(snake[i].x == myHead.x && snake[i].y == myHead.y + 2){
+      isMoveSafe.up = false;
+    }
+
+  if(gameState.you.length > 5){
+  let allSnakes = gameState.board.snakes;
+for (let j = 0; j< allSnakes.length; j++){
+  let snake = allSnakes[j].body
+  for (let i = 0; i< snake.length; i++) {
+    if(snake[0].y == myHead.y && snake[0].x == myHead.x - 2){
+      isMoveSafe.right = false;
+    }
+    if(snake[0].y == myHead.y && snake[0].x == myHead.x + 2){
+      isMoveSafe.left = false;
+    }
+    if(snake[0].x == myHead.x && snake[0].y == myHead.y - 2){
+      isMoveSafe.up = false;
+    }
+    if(snake[0].x == myHead.x && snake[0].y == myHead.y + 2){
+      isMoveSafe.down = false;
+    }
 
   }
+}
+  }
+}
 }
 
       //  if(myBody.{i})

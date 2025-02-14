@@ -21,9 +21,9 @@ function info() {
   return {
     apiversion: "1",
     author: "",       // TODO: Your Battlesnake Username
-    color: "#888888", // TODO: Choose color
-    head: "default",  // TODO: Choose head
-    tail: "default",  // TODO: Choose tail
+    color: "#B53636", // TODO: Choose color
+    head: "ski",  // TODO: Choose head
+    tail: "tiger-tail",  // TODO: Choose tail
   };
 }
 
@@ -82,6 +82,8 @@ function move(gameState) {
     console.log(`MOVE ${gameState.turn}: No safe moves detected! Moving down`);
     return { move: "down" };
   }
+
+
 
   // Choose a random move from the safe moves
   const nextMove = safeMoves[Math.floor(Math.random() * safeMoves.length)];
